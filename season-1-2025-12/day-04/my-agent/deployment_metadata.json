@@ -1,6 +1,4 @@
 {
-  "remote_agent_engine_id": "projects/455553247608/locations/us-central1/reasoningEngines/5969185130399399936",
-  "deployment_target": "agent_engine",
-  "is_a2a": false,
-  "deployment_timestamp": "2026-11-06T19:31:22.761473"
+  "remote_agent_engine_id": "None",
+  "deployment_timestamp": "None"
 }
