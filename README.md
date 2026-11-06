@@ -14,7 +14,7 @@ season-1-2025-12/
 | Day | Topic | Status |
 |---|---|---|
 | [01](https://adventofagents.com/2025/12/01) | Launch Initiative | ⬜ |
-| [02](https://adventofagents.com/2025/12/02) | Hello World with YAML | ⬜ |
+| [02](https://adventofagents.com/2025/12/02) | Hello World with YAML | ✅ |
 | [03](https://adventofagents.com/2025/12/03) | Gemini 3 + ADK | ⬜ |
 | [04](https://adventofagents.com/2025/12/04) | Source-Based Deployment | ⬜ |
 | [05](https://adventofagents.com/2025/12/05) | Production Observability | ⬜ |
