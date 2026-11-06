@@ -59,14 +59,36 @@ def get_current_time(timezone: str = "Asia/Ho_Chi_Minh") -> dict:
     return {"status": "ok", "timezone": tz, "datetime": now.isoformat(timespec="seconds")}
 
 
+def _today() -> str:
+    return datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")).strftime("%A %d %B %Y")
+
+
+# Day 05 fix: BigQuery logs showed the model searching "... tháng 12 2024" for "latest news"
+# because it doesn't know today's date. Instructions can be functions (InstructionProvider),
+# re-evaluated on every call, so the current date is always injected.
+def search_instruction(_ctx) -> str:
+    return (
+        f"Today is {_today()}. "
+        "Use the google_search tool to answer the question with up-to-date information. "
+        "Never add a past year or month to a search unless the user asked for it. "
+        "Answer concisely and mention the sources you used."
+    )
+
+
+def root_instruction(_ctx) -> str:
+    return (
+        f"You are a helpful assistant. Today is {_today()}.\n"
+        "- For news, recent events, or facts you are unsure about, call google_search_agent.\n"
+        "- For the current date or time, call get_current_time.\n"
+        "Answer in the same language the user writes in."
+    )
+
+
 search_agent = Agent(
     name="google_search_agent",
     model=_model(),
     description="Searches Google for current information and facts.",
-    instruction=(
-        "Use the google_search tool to answer the question with up-to-date information. "
-        "Answer concisely and mention the sources you used."
-    ),
+    instruction=search_instruction,
     tools=[google_search],
 )
 
@@ -74,12 +96,7 @@ root_agent = Agent(
     name="root_agent",
     model=_model(),
     description="A helpful assistant that can search Google and tell the time.",
-    instruction=(
-        "You are a helpful assistant.\n"
-        "- For news, recent events, or facts you are unsure about, call google_search_agent.\n"
-        "- For the current date or time, call get_current_time.\n"
-        "Answer in the same language the user writes in."
-    ),
+    instruction=root_instruction,
     tools=[AgentTool(agent=search_agent), get_current_time],
 )
 

@@ -17,7 +17,7 @@ season-1-2025-12/
 | [02](https://adventofagents.com/2025/12/02) | Hello World with YAML | ✅ |
 | [03](https://adventofagents.com/2025/12/03) | Gemini 3 + ADK | ✅ |
 | [04](https://adventofagents.com/2025/12/04) | Source-Based Deployment | ✅ |
-| [05](https://adventofagents.com/2025/12/05) | Production Observability | ⬜ |
+| [05](https://adventofagents.com/2025/12/05) | Production Observability | ✅ |
 | [06](https://adventofagents.com/2025/12/06) | ADK in IDEs | ⬜ |
 | [07](https://adventofagents.com/2025/12/07) | LLMs Can Execute Code | ⬜ |
 | [08](https://adventofagents.com/2025/12/08) | Context Management with ADK Layers | ⬜ |

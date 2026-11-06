@@ -50,6 +50,7 @@ deploy:
 		--entrypoint-module=app.agent_engine_app \
 		--entrypoint-object=agent_engine \
 		--requirements-file=app/app_utils/.requirements.txt \
+		$(if $(LOGS_BUCKET_NAME),--set-env-vars=LOGS_BUCKET_NAME=$(LOGS_BUCKET_NAME)) \
 		$(if $(AGENT_IDENTITY),--agent-identity) \
 		$(if $(filter command line,$(origin SECRETS)),--set-secrets="$(SECRETS)")
 
